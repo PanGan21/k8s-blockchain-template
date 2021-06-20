@@ -11,11 +11,10 @@ kubectl create -f ./dashboard/ethstats-secret.yaml
 kubectl create -f ./dashboard/ethstats-dpl.yaml
 kubectl create -f ./dashboard/ethstats-ingress.yaml
 
-kubectl create -f ./geth/geth-configmap.yaml
+kubectl create configmap eth-geth --from-file=genesis/
+
 kubectl create -f ./geth/geth-miner-secret.yaml
 kubectl create -f ./geth/geth-miner-dpl.yaml
 
 kubectl apply -f ./tx/geth-tx-srv.yaml
 kubectl apply -f ./tx/geth-tx-dpl.yaml
-
-# kubectl port-forward service/eth-ethstats 8080:80
